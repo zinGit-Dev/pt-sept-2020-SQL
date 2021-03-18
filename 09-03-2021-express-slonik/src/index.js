@@ -4,6 +4,8 @@ const db = require('../config/db')
 const app = express()
 
 // Don't forget middleware to parse json body!
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 // Main route passing db configuration as argument because THAT 'require' returns a function
 app.use('/', require('./services')(db))
@@ -21,6 +23,6 @@ app.use((error, _, res, __) => {
   })
 })
 
-app.listen(3000, () => {
-  console.info('> listening at http://localhost:3000')
+app.listen(4000, () => {
+  console.info('> listening at http://localhost:4000')
 })
